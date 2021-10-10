@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --primary-color: #5A5483;
+}
+
+
+.primary-color{
+    color: var(--primary-color);
+}
+
+.bg-primary-color {
+    background-color: var(--primary-color);
+}
+
+main {
+    padding-top: 80px;
+}
