@@ -1,27 +1,27 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand text-white" [routerLink]="['/']">
-        Angular x Firebase
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-        <ul class="navbar-nav">
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                <a class="nav-link" [routerLink]="['/']">home</a>
-            </li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="!auth.authenticated">
-                <a class="nav-link" [routerLink]="['/login']">login</a>
-            </li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.authenticated">
-                <a class="nav-link" [routerLink]="['/profile']">profile</a>
-            </li>
-            <li *ngIf="auth.authenticated">
-                <a class="nav-link" (click)="this.auth.signOut()">logout</a>
-            </li>
-        </ul>
-    </div>
+  <a class="navbar-brand text-white" [routerLink]="['/']">
+    IAssign
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="navbar-nav">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/']">Home</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="!auth.authenticated">
+        <a class="nav-link" [routerLink]="['/login']">login</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.authenticated">
+        <a class="nav-link" [routerLink]="['/profile']">profile</a>
+      </li>
+      <li *ngIf="auth.authenticated">
+        <a class="nav-link" (click)="this.auth.signOut()">logout</a>
+      </li>
+    </ul>
+  </div>
 </nav>

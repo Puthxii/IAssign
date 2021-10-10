@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { firebase } from '@firebase/app';
 import '@firebase/auth';
 import { GithubAuthProvider, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from '@firebase/auth-types';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable()
 export class AuthService {
   authState: any = null;
@@ -71,7 +71,7 @@ export class AuthService {
   // tslint:disable-next-line: typedef
   private async socialSignIn(provider: GithubAuthProvider | GoogleAuthProvider | FacebookAuthProvider | TwitterAuthProvider) {
     try {
-      const credential = await this.afAuth.auth.signInWithPopup(provider);
+      const credential = await this.afAuth.signInWithPopup(provider);
       console.log(credential.user);
       this.authState = credential.user;
       this.updateUserData();
@@ -83,7 +83,7 @@ export class AuthService {
   // tslint:disable-next-line: typedef
   async anonymousLogin() {
     try {
-      const user = await this.afAuth.auth.signInAnonymously();
+      const user = await this.afAuth.signInAnonymously();
       this.authState = user;
       this.router.navigate(['/']);
     } catch (error) {
@@ -93,7 +93,7 @@ export class AuthService {
   // tslint:disable-next-line: typedef
   async emailSignUp(email: string, password: string) {
     try {
-      const user = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+      const user = await this.afAuth.createUserWithEmailAndPassword(email, password);
       this.authState = user;
       this.addUserData();
       this.router.navigate(['/']);
@@ -104,7 +104,7 @@ export class AuthService {
   // tslint:disable-next-line: typedef
   async emailLogin(email: string, password: string) {
     try {
-      const user = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+      const user = await this.afAuth.signInWithEmailAndPassword(email, password);
       this.authState = user;
       this.updateUserData();
       this.router.navigate(['/']);
@@ -131,7 +131,7 @@ export class AuthService {
     });
   }
   signOut(): void {
-    this.afAuth.auth.signOut();
+    this.afAuth.signOut();
     this.router.navigate(['/']);
   }
   private updateUserData(): void {
